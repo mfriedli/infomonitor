@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="infoMonitorApp">
+    <head>
+        <title>www.inlinehalle.ch - INFO Monitor Admin Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="css/adminpage.css" rel="stylesheet" media="screen">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+              <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+            <![endif]-->
+
+    </head>
+    <body>
+
+        <h1>Admin Page</h1>
+
+        <form role="form" action="contentFileUpload" enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <label for="inputFile">Hauptinhalt Datei</label>
+                <input type="file" id="inputFile" name="uploadFile">
+                <p class="help-block">W&auml;hle eine Datei die im Hauptinhalt angezeigt werden soll</p>
+                 
+                <label for="fileTypeId">Dateityp (WEB, JPG)</label>
+                <input type="text" id="fileTypeId" name="fileType">
+                <p></p>
+                <label for="websiteId">URL externe Webseite</label>
+                <input type="text" id="websiteId" name="websiteUrl">
+                <p></p>
+                <label for="intervalTime">Anzeigeedauer in ms</label>
+                <input type="text" id="intervalTime" name="interval">
+                <p></p>
+                <label for="widthId">Breite in px</label>
+                <input type="text" id="widthId" name="width">
+                <p></p>
+                <label for="heightId">H&ouml;he in px</label>
+                <input type="text" id="heightId" name="height">
+                <p></p>
+                <label for="protocolId">Protocol</label>
+                <input type="text" id="protocolId" name="protocol">
+                <p></p>
+                <label for="activeFlagId">Anzeigen</label>
+                <input type="checkbox" id="activeFlagId" name="isActive">
+            </div>
+           
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script type="text/javascript" src="lib/jquery/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="lib/angular/angular.js"></script>
+        <script type="text/javascript" src="lib/angular/angular-route.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/services.js"></script>
+        <script type="text/javascript" src="js/controllers.js"></script>
+        <script type="text/javascript" src="js/filters.js"></script>
+        <script type="text/javascript" src="js/directives.js"></script>
+    </body>
+</html>
+

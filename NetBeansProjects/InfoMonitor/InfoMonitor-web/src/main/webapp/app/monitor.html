@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="infoMonitorApp">
+    <head>
+        <title>www.inlinehalle.ch - INFO Monitor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="css/breakingnews.css" rel="stylesheet" media="screen">
+        <link href="css/lockerroomtable.css" rel="stylesheet" media="screen">
+        <link href="css/latestresulttable.css" rel="stylesheet" media="screen">
+        <link href="css/base.css" rel="stylesheet" media="screen">
+        <link href="css/content.css" rel="stylesheet" media="screen">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+              <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+            <![endif]-->
+
+    </head>
+    <body>
+        <div id="container"></div>
+        <div id="lockerrooms" ng-controller="LockerRoomCtrl as LockerRoomCtrl">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Garderoben Einteilung f&uuml;r die n&auml;chsten Spiele - <b>{{LockerRoomCtrl.date}}</b></div>
+                <!-- Table -->
+                <table ng-table class="table lockerroom-table">
+                    <thead>
+                        <tr>
+                            <th style="vertical-align: middle; text-align: center;">Nr</th>
+                            <th style="vertical-align: middle; text-align: center;">Spielbeginn</th>
+                            <th>Mannschaft</th>
+                            <th>Liga</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="lockerroom in LockerRoomCtrl.lockerrooms">
+                        <td data-title="'Garderobe'" style="vertical-align: middle; text-align: center;">{{lockerroom.Garderobe}}</td>
+                        <td data-title="'Zeit'" style="vertical-align: middle; text-align: center;">{{lockerroom.Zeit}}</td>
+                        <td data-title="'Team'">{{lockerroom.Team}}</td>
+                        <td data-title="'Liga'">{{lockerroom.Liga}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="lastresults" ng-controller="LatestResultsCtrl as LatestResultsCtrl">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Die letzten Resultate</div>
+                <!-- Result List -->
+                <!-- Table -->
+                <table ng-table class="table latestresult-table">
+                    <thead>
+                        <tr>
+                            <th style="vertical-align: middle; text-align: center;">Liga</th>
+                            <th>Heim</th>
+                            <th>Gast</th>
+                            <th>Resultat</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="result in LatestResultsCtrl.results">
+                        <td data-title="'Liga'" style="vertical-align: middle; text-align: center;">{{result.Liga}}</td>
+                        <td data-title="'Heim'">{{result.Heim}}</td>
+                        <td data-title="'Gast'">{{result.Gast}}</td>
+                        <td data-title="'Resultat'"><b>{{result.Resultat}}</b> ({{result.Resultat1}}, {{result.Resultat2}})</td>
+                    </tr>
+                </table>               
+            </div>
+        </div>
+
+
+        <div id="content" ng-controller="ContentCtrl as ContentCtrl">
+            <div style="text-align: center; vertical-align: middle;">  
+               <!-- <iframe src="https://www.google.com/calendar/embed?showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=980&amp;wkst=2&amp;bgcolor=%23ffff66&amp;src=michael.friedli%40hispeed.ch&amp;color=%230D7813&amp;ctz=Europe%2FZurich" style=" border:solid 1px #777 " width="1300" height="800" frameborder="0" scrolling="no"></iframe>
+           -->
+                <span ng-show="{{ContentCtrl.showImage}}">{{ContentCtrl.img}}</span>
+          
+            </div>
+        </div>
+
+        
+        <div id="footer" ng-controller="TotomatCtrl as TotomatCtrl">
+            <div class="totomat" ng-if="TotomatCtrl.totomatResults.length>0">
+                <marquee behavior="scroll" scrolldelay="200" loop="" direction="left">
+                    Totomat:
+                    <span ng-repeat="result in TotomatCtrl.totomatResults">
+                       <b>{{result.Liga}}:</b>
+                        {{result.Heim}}-{{result.Gast}} 
+                        <span ng-show="{{result.IsRunning}}" style="color: red;"> *</span>
+                        <b>{{result.Resultat}}</b>                         
+                        ({{result.Resultat1}};{{result.Resultat2}}) /                
+                    </span>
+                </marquee>
+            </div>
+            <div class="breakingnews" ng-controller="BreakingNewsCtrl as BreakingNewsCtrl">
+                <span ng-if="BreakingNewsCtrl.breakingNews.length>0">
+                    {{BreakingNewsCtrl.breakingNews[0].Text}}</span>    
+            </div>
+        </div>
+
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script type="text/javascript" src="lib/jquery/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="lib/angular/angular.js"></script>
+        <script type="text/javascript" src="lib/angular/angular-route.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/services.js"></script>
+        <script type="text/javascript" src="js/controllers.js"></script>
+        <script type="text/javascript" src="js/filters.js"></script>
+        <script type="text/javascript" src="js/directives.js"></script>
+        <script type="text/javascript" src="js/websockets.js"></script> 
+    </body>
+</html>
+
