@@ -1,0 +1,32 @@
+<div ng-controller="OverviewCtrl as OverviewCtrl">
+    <h4 style="margin-left: 10px; margin-bottom: 20px;">Alle Inhalte:</h4>
+    
+    <table style="table-layout: fixed; " class="table-striped table-hover table-bordered table-condensed admin-edit-table-back admin-edit-table">
+        
+        <thead>
+        <th>Typ</th>
+        <th>Anzeigezeit</th>
+        <th>Datei</th>
+        <th>Webseite</th>
+        <th>Breite</th>
+        <th>H&ouml;he</th>
+        <th>Anzeigen</th>
+        <th>Erstellung</th>
+        <th></th>
+        <th></th>
+        </thead>
+        <tr ng-repeat="item in OverviewCtrl.contentItems">
+            <td>{{item.contentType}}</td>
+            <td>{{item.interval}} ms</td>
+            <td class="admin-trim-info-2">{{item.contentUri}}</td>
+            <td class="admin-trim-info">{{item.externalWebUrl}}</td>
+            <td>{{item.width}} px</td>
+            <td>{{item.height}} px</td>
+            <td>{{item.isActive}}</td>
+            <td>{{item.date}}</td>
+            <td><a ng-click="edit(item.id)"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td><a ng-click="delete(item.id)"><span class="glyphicon glyphicon-remove"></span></a></td>
+        </tr>
+
+    </table>
+</div>

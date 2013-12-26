@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           attributeFormDefault="unqualified" elementFormDefault="qualified">
+<xs:element name="ihs">
+<xs:complexType>
+<xs:sequence>
+<xs:element type="xs:string" name="xmlversion"/>
+<xs:element name="Spiel" maxOccurs="unbounded" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element type="xs:short" name="spielid"/>
+<xs:element type="xs:short" name="spielnr"/>
+<xs:element type="xs:string" name="datum"/>
+<xs:element type="xs:string" name="heim"/>
+<xs:element type="xs:string" name="gast"/>
+<xs:element type="xs:string" name="resultat"/>
+<xs:element type="xs:byte" name="nachPenalty"/>
+<xs:element type="xs:byte" name="nachVerlaengerung"/>
+<xs:element type="xs:string" name="spielort"/>
+<xs:element type="xs:byte" name="gespielt"/>
+<xs:element type="xs:byte" name="forfait"/>
+<xs:element type="xs:byte" name="livetickeron"/>
+<xs:element type="xs:string" name="resultat_1"/>
+<xs:element type="xs:string" name="resultat_2"/>
+<xs:element type="xs:string" name="resultat_v"/>
+<xs:element type="xs:string" name="resultat_p"/>
+<xs:element type="xs:byte" name="abgesagt"/>
+<xs:element type="xs:byte" name="verschoben"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>

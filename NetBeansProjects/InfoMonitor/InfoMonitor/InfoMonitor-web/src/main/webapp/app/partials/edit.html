@@ -1,0 +1,47 @@
+<div  ng-controller="EditCtrl as EditCtrl">
+
+    <form ng-submit="saveItem()">
+    <div class="form-group add-form">
+        
+        <input type="text" id="itemId" ng-model="EditCtrl.contentItem.id" disabled>
+        <label for="itemId">Id</label>
+        <p></p>
+        
+        <input type="text" id="fileTypeId" ng-model="EditCtrl.contentItem.contentType" disabled>
+        <label for="fileTypeId">Art des Inhalts</label>
+        <p></p>
+           
+        <span ng-hide="EditCtrl.fileChooserDisabled">
+        <input type="text" disabled id="inputFileId" ng-model="EditCtrl.contentItem.contentUri">
+        <label for="inputFileId">Dateiname des Bildes</label>
+        <p></p> 
+        </span>
+       
+        <span ng-hide="EditCtrl.externalUrlDisabled">
+        <input type="text" id="websiteId" name="websiteUrl" ng-model="EditCtrl.contentItem.externalWebUrl" maxlength="400" size="14">
+        <label for="websiteId">URL externe Webseite</label>
+        <p></p>
+        </span>
+        
+        <input type="text" id="intervalTime" name="interval" ng-model="EditCtrl.contentItem.interval" size="14">
+        <label for="intervalTime">Anzeigeedauer in ms</label>
+        <p></p>
+       
+        <input type="text" id="widthId" name="width" ng-model="EditCtrl.contentItem.width" value="1300" size="14">
+        <label for="widthId">Breite in px</label>
+        <p></p>
+        
+        <input type="text" id="heightId" name="height" ng-model="EditCtrl.contentItem.height" value="950" size="14">
+        <label for="heightId">H&ouml;he in px</label>
+        <p></p>
+        
+               
+        <input type="checkbox" id="activeFlagId" name="isActive" ng-model="EditCtrl.contentItem.isActive">
+        <label for="activeFlagId">Anzeigen</label>
+        <p></p>
+        
+        <button type="submit" class="btn btn-default" ng-disabled="EditCtrl.externalUrlDisabled && EditCtrl.fileChooserDisabled">Speichern</button>
+         
+    </div>  
+</form>
+</div>

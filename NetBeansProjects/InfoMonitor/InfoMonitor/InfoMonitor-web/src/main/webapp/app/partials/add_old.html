@@ -1,0 +1,41 @@
+<div  ng-controller="AddCtrl as AddCtrl">
+
+<form ng-submit="processForm()">
+    <div class="form-group add-form">
+        
+        <select name="fileType" ng-model="AddCtrl.formData.selectedItem" 
+          ng-options="item as item.name for item in AddCtrl.items" ng-change="selectionChanged()"> </select>
+        <label for="fileTypeId">Art des Inhalts</label>
+        <p></p>
+            
+        <input type="file" id="inputFile" ng-model="fileToBeUploaded" ng-hide="AddCtrl.fileChooserDisabled">
+        <p></p>        
+       
+        <span ng-hide="AddCtrl.externalUrlDisabled">
+        <input type="text" id="websiteId" placeholder="www.xyz.ch" ng-model="AddCtrl.formData.selectedWebsiteUrl" maxlength="400" size="14">
+        <label for="websiteId">URL externe Webseite</label>
+        <p></p>
+        </span>
+        
+        <input type="text" id="intervalTime" ng-model="AddCtrl.formData.interval" placeholder="10000" size="14">
+        <label for="intervalTime">Anzeigeedauer in ms</label>
+        <p></p>
+       
+        <input type="text" id="widthId" ng-model="AddCtrl.formData.width" placeholder="1300" size="14">
+        <label for="widthId">Breite in px</label>
+        <p></p>
+        
+        <input type="text" id="heightId" ng-model="AddCtrl.formData.height" placeholder="950" size="14">
+        <label for="heightId">H&ouml;he in px</label>
+        <p></p>
+        
+               
+        <input type="checkbox" id="activeFlagId" ng-model="AddCtrl.formData.isActive" checked>
+        <label for="activeFlagId">Anzeigen</label>
+        <p></p>
+        
+        <button type="submit" class="btn btn-default" ng-disabled="AddCtrl.externalUrlDisabled && AddCtrl.fileChooserDisabled">Speichern</button>
+         
+    </div>  
+</form>
+</div>

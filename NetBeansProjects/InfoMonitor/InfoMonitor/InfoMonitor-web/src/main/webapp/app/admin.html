@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="infoMonitorAdmin">
+    <head>
+        <title>www.inlinehalle.ch - INFO Monitor Admin Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/adminpage.css" rel="stylesheet" media="screen">
+
+
+    </head>
+    <body>
+        <div class="admin-content">
+            <h1>Info Monitor - Administration</h1>
+
+            <span style="padding-bottom: 50px;">&nbsp;</span>
+
+            <div ng-controller="HeaderCtrl as HeaderCtrl">
+               
+                <ul class="nav nav-tabs">
+                    <li ng-class="{ active: isActive('/') || isActive('/start')}"><a href="#/start">Start</a></li>                            
+                
+                    <li ng-class="{ active: isActive('/add') || isActive('/overview')}" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Hauptinhalt <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="{ active: isActive('/add')}"><a href="#/add">Hinzuf&uuml;gen</a></li>
+                            <li ng-class="{ active: isActive('/overview')}"><a href="#/overview">Modifizieren</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="view-animate-container">
+                <div ng-view class="view-animate"></div>
+            </div>
+
+
+        </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script type="text/javascript" src="lib/jquery/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="lib/angular/angular.js"></script>
+        <script type="text/javascript" src="lib/angular/angular-route.js"></script>
+        <script type="text/javascript" src="lib/angular/angular-animate.js"></script>
+        <script type="text/javascript" src="js/app_admin.js"></script>
+        <script type="text/javascript" src="js/controllers_admin.js"></script>
+    </body>
+</html>
+

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ihs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="xmlversion"/>
+        <xs:element name="Spiel" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:short" name="spielid"/>
+              <xs:element type="xs:byte" name="spielnr"/>
+              <xs:element type="xs:string" name="datum"/>
+              <xs:element type="xs:string" name="heim"/>
+              <xs:element type="xs:string" name="gast"/>
+              <xs:element type="xs:string" name="heimshort"/>
+              <xs:element type="xs:string" name="gastshort"/>
+              <xs:element type="xs:string" name="heimkuerzel"/>
+              <xs:element type="xs:string" name="gastkuerzel"/>
+              <xs:element type="xs:string" name="liganame"/>
+              <xs:element type="xs:string" name="resultat"/>
+              <xs:element type="xs:string" name="resultath1"/>
+              <xs:element type="xs:string" name="resultath2"/>
+              <xs:element type="xs:string" name="resultath3"/>
+              <xs:element type="xs:string" name="resultatv"/>
+              <xs:element type="xs:string" name="resultatv2"/>
+              <xs:element type="xs:string" name="resultatp"/>
+              <xs:element type="xs:byte" name="nachPenalty"/>
+              <xs:element type="xs:byte" name="nachVerlaengerung"/>
+              <xs:element type="xs:string" name="spielort"/>
+              <xs:element type="xs:byte" name="isrunning"/>
+              <xs:element type="xs:byte" name="gespielt"/>
+              <xs:element type="xs:byte" name="lastgoal"/>
+              <xs:element type="xs:byte" name="livetickeron"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
