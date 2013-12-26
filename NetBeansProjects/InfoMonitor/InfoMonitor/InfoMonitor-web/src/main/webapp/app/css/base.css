@@ -50,9 +50,11 @@ body {
     z-index: 2;
     position: absolute;
     top: 960px;
-    height: 110px;
+    height: 115px;
     width: 1910px;
-    margin: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
     background-color: #D9D5D5;
 }
 @-webkit-keyframes blinker {  

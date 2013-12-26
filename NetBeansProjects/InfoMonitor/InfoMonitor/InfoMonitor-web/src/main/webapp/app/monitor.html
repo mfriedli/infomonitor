@@ -82,10 +82,10 @@
                 -->
              
                 <span ng-if="ContentCtrl.showImage"  style="vertical-align: middle;">
-                    <img  ng-src="{{ContentCtrl.contentUrl}}">
+                    <img  ng-src="{{ContentCtrl.contentUrl}}" height="{{ContentCtrl.content.height}}" width="{{ContentCtrl.content.width}}">
                 </span>
                 <span ng-if="ContentCtrl.showWebpage"  style="vertical-align: middle;"> 
-                    <iframe ng-src="{{ContentCtrl.contentUrl}}" type="text/html" style="border:solid 1px #777" width="1300" height="950" frameborder="0" scrolling="no"></iframe>
+                    <iframe ng-src="{{ContentCtrl.contentUrl}}" type="text/html" style="border:solid 1px #777" height="{{ContentCtrl.content.height}}" width="{{ContentCtrl.content.width}}" frameborder="0" scrolling="no"></iframe>
                 
                  </span>
 
