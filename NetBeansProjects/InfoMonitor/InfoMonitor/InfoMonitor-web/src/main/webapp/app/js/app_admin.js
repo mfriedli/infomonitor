@@ -14,5 +14,8 @@ config(['$routeProvider', function($routeProvider) {
           .when('/overview', {templateUrl: 'partials/overview.html', controller: 'OverviewCtrl'})
           .when('/edit/:itemId', {templateUrl: 'partials/edit.html', controller: 'EditCtrl'})
           .when('/start', {templateUrl: 'partials/start.html', controller: 'StartCtrl'})
+          .when('/newsoverview', {templateUrl: 'partials/newsoverview.html', controller: 'NewsOverviewCtrl'})
+          .when('/addnews', {templateUrl: 'partials/addnews.html', controller: 'AddNewsCtrl'}) 
+          .when('/editnews/:itemId', {templateUrl: 'partials/editnews.html', controller: 'EditNewsCtrl'})
           .otherwise({redirectTo: '/'});
 }]);

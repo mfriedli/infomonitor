@@ -163,6 +163,109 @@ angular.module('infoMonitorAdmin.controllers_admin', []).
                 $location.path('/start');
             };
         })
+        .controller('NewsOverviewCtrl', function NewsOverviewCtrl($scope, $location, $http) {
+            var thisCtrlCtx = this;
+            this.newsItems = [];
+            loadAllNewsItems(); // init
+            
+            
+            function loadAllNewsItems() {
+                $http({
+                    method: 'GET',
+                    url: '/InfoMonitor-web/rest/newsItems'
+                })
+                .success(function(serviceResponse) {
+                    thisCtrlCtx.newsItems = angular.fromJson(serviceResponse);
+
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /newsItems');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/newsoverview');                   
+                });
+            };
+        
+            $scope.edit = function(id) {
+                $location.path('/editnews/' + id);
+            };
+            
+            $scope.delete = function(id) {
+                $http({
+                    method: 'DELETE',
+                    url: '/InfoMonitor-web/rest/deleteNewsItem/id/'+id
+                })
+                .success(function(serviceResponse) {
+                    loadAllNewsItems();
+                    $location.path('/newsoverview');
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /delete/id');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/newsoverview');                  
+                });                
+            };            
+        })
+        .controller('AddNewsCtrl', function AddNewsCtrl($scope, $http, $location) {
+            var thisCtrlCtx = this;
+            this.newsItem;                       
+            
+            $scope.saveNewsItem = function() {
+                 $http({
+                    method: 'POST',
+                    url: '/InfoMonitor-web/rest/addNewsItem',                   
+                    data: thisCtrlCtx.newsItem, // pass in data as strings json
+                    headers: {'Content-Type': 'application/json'}  // set the headers so angular passing info as form data (not request payload)
+                })
+                .success(function(data) {
+                    $location.path('/newsoverview');                   
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /addNewsItem');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/newsoverview');                   
+                });
+            };
+        })
+        .controller('EditNewsCtrl', function EditNewsCtrl($scope, $http, $routeParams, $location) {
+            var thisCtrlCtx = this;
+            this.newsItem;
+                                    
+            $http({
+                method: 'GET',
+                url: '/InfoMonitor-web/rest/newsItem/id/'+$routeParams.itemId
+            })
+            .success(function(serviceResponse) {
+                thisCtrlCtx.newsItem = angular.fromJson(serviceResponse);
+            })
+            .error(function(data, status) {
+                console.log('Error when calling rest service /newsItem/id');
+                console.log(data);
+                console.log(status);
+                $location.path('/editNews');                   
+            });
+            
+            $scope.saveNewsItem = function() {
+                 $http({
+                    method: 'PUT',
+                    url: '/InfoMonitor-web/rest/updateNewsItem/id/'+thisCtrlCtx.newsItem.id,                   
+                    data: thisCtrlCtx.newsItem, // pass in data as strings x-www-form-urlencoded
+                    headers: {'Content-Type': 'application/json'}  // set the headers so angular passing info as form data (not request payload)
+                })
+                .success(function(data) {
+                    //console.log(data);
+                    $location.path('/newsoverview');                   
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /updateNewsItem/id');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/newsoverview');                   
+                });
+            };
+        })
         .controller('HeaderCtrl', function HeaderCtrl($scope, $location) {
             var thisCtrlCtx = this;
             $scope.isActive = function(viewLocation) {

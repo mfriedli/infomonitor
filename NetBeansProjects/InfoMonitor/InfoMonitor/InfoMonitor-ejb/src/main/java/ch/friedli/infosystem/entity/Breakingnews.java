@@ -8,6 +8,7 @@ package ch.friedli.infosystem.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +30,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "BREAKINGNEWS")
 @NamedQueries({
+    @NamedQuery(name = "Breakingnews.deleteById", query ="DELETE FROM Breakingnews b WHERE b.id = :id"),
     @NamedQuery(name = "Breakingnews.findAll", query = "SELECT b FROM Breakingnews b"),
     @NamedQuery(name = "Breakingnews.findById", query = "SELECT b FROM Breakingnews b WHERE b.id = :id"),
     @NamedQuery(name = "Breakingnews.findByText", query = "SELECT b FROM Breakingnews b WHERE b.text = :text"),
@@ -57,6 +59,10 @@ public class Breakingnews implements Serializable {
     @NotNull
     @Column(name = "IS_ACTIVE")
     private short isActive;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "IS_BLINKING")
+    private short isBlinking;
 
     public Breakingnews() {
     }
@@ -111,21 +117,31 @@ public class Breakingnews implements Serializable {
         this.isActive = isActive;
     }
 
+    public short getIsBlinking() {
+        return isBlinking;
+    }
+
+    public void setIsBlinking(short isBlinking) {
+        this.isBlinking = isBlinking;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Breakingnews)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Breakingnews other = (Breakingnews) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Breakingnews other = (Breakingnews) obj;
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -133,7 +149,8 @@ public class Breakingnews implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.friedli.infosystem.entity.Breakingnews[ id=" + id + " ]";
+        return "Breakingnews{" + "id=" + id + ", text=" + text + ", date=" + date + ", author=" + author + ", isActive=" + isActive + ", isBlinking=" + isBlinking + '}';
     }
+
     
 }

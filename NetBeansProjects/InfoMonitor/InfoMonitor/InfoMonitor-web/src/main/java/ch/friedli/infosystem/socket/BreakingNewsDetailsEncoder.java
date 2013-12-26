@@ -22,6 +22,8 @@ public class BreakingNewsDetailsEncoder implements Encoder.Text<BreakingNewsDeta
                 .add("Text", detail.getText())
                 .add("Datum", detail.getDateString())
                 .add("Author", detail.getAuthor())
+                .add("isActive", detail.isIsActive())
+                .add("isBlinking", detail.isIsBlinking())
         );
         JsonArray detailsJson = builder.build();
         return detailsJson.toString();

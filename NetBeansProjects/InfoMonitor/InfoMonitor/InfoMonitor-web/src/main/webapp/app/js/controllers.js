@@ -93,7 +93,8 @@ infoMonitorApp.controller('BreakingNewsCtrl', function BreakingNewsCtrl($scope) 
     var thisCtrlCtx = this;
     this.breakingNews = "Info: Bitte f&uuml;r die Trainings Garderoben links oder rechts benutzen.";
     this.connectionstate;
-    
+    this.cssClass;
+   
     var ws = new WebSocket("ws://localhost:8080/InfoMonitor-web/breakingnewsendpoint");
 
     ws.onopen = function() {
@@ -109,6 +110,9 @@ infoMonitorApp.controller('BreakingNewsCtrl', function BreakingNewsCtrl($scope) 
     function applyToCtrlScope(message) {
         $scope.$apply(function() {
             thisCtrlCtx.breakingNews = angular.fromJson(message.data);
+            if (thisCtrlCtx.breakingNews.isBlinking) {
+                thisCtrlCtx.cssClass = 'css3-blink';
+            }
         });
     }
 

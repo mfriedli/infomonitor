@@ -1,0 +1,34 @@
+<div  ng-controller="EditNewsCtrl as EditNewsCtrl">
+<form ng-submit="saveNewsItem()">
+    <div class="form-group add-form">
+        
+        <input type="text" id="itemId" ng-model="EditNewsCtrl.newsItem.id" disabled>
+        <label for="itemId">Id</label>
+        <p></p>
+        
+        <input type="text" id="dateId" ng-model="EditNewsCtrl.newsItem.date" disabled>
+        <label for="dateId">Erstellt</label>
+        <p></p> 
+        
+        <input type="text" id="authorId" ng-model="EditNewsCtrl.newsItem.author" size="35" maxSize="35">
+        <label for="authorId">Author</label>
+        <p></p>     
+        
+        <input type="text" id="newsTextId" ng-model="EditNewsCtrl.newsItem.text"  size="150" maxSize="150">
+        <label for="newsTextId">Breaking News Text</label>
+        <p></p>              
+            
+        <input type="checkbox" id="blinkingFlagId" name="isActive" ng-model="EditNewsCtrl.newsItem.isBlinking">
+        <label for="activeFlagId">Blinkender Text</label>
+        <p></p>
+        
+        <input type="checkbox" id="activeFlagId" name="isActive" ng-model="EditNewsCtrl.newsItem.isActive">
+        <label for="activeFlagId">Anzeigen</label>
+        <p></p>
+              
+        
+        <button type="submit" class="btn btn-default">Speichern</button>
+         
+    </div>  
+</form>
+</div>

@@ -43,6 +43,7 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
             itemToBeUpdated.setHeight(detail.getHeight());
             itemToBeUpdated.setIsActive(detail.isIsActive() == true ? Short.parseShort("1") : Short.parseShort("0"));
             itemToBeUpdated.setIntervalShow(detail.getShowInterval());
+            itemToBeUpdated.setCreationTime(new Date());
 
             this.em.persist(itemToBeUpdated);
         }
@@ -113,10 +114,10 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
         detail.setHeight(item.getHeight());
         detail.setWidth(item.getWidth());
         detail.setShowInterval(item.getIntervalShow());
-        detail.setIsActive(item.getIsActive()==1?true:false);
+        detail.setIsActive((item.getIsActive()==1));
         detail.setProtocol(item.getProtocol());
         detail.setExternalWebUrl(item.getExtWebUrl());
-        SimpleDateFormat df = new SimpleDateFormat("dd.MMM-YYYY HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("dd. MMM YYYY HH:mm:ss");
         detail.setCreateDateString(df.format(item.getCreationTime()));
         return detail;
     }
