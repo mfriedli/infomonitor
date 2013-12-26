@@ -39,13 +39,25 @@
                             <li ng-class="{ active: isActive('/newsoverview')}"><a href="#/newsoverview">Modifizieren</a></li>
                         </ul>
                     </li>
+                    
+                     <li ng-class="{ active: isActive('/addleague') || isActive('/leaguesoverview') || isActive('/addseason') || isActive('/seasonsoverview')}" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Einstellungen <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="{ active: isActive('/addseason')}"><a href="#/addseason">Saison Hinzuf&uuml;gen</a></li>
+                            <li ng-class="{ active: isActive('/seasonsoverview')}"><a href="#/seasonsoverview">Saisons Modifizieren</a></li>
+                            <li ng-class="{ active: isActive('/addleague')}"><a href="#/addleague">Liga Hinzuf&uuml;gen</a></li>
+                            <li ng-class="{ active: isActive('/leaguesoverview')}"><a href="#/leaguesoverview">Ligen Modifizieren</a></li>
+                        
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
             <div class="view-animate-container">
                 <div ng-view class="view-animate"></div>
             </div>
-
 
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

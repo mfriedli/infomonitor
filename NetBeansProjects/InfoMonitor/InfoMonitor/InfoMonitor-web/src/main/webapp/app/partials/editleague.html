@@ -1,0 +1,25 @@
+<div  ng-controller="EditLeagueCtrl as EditLeagueCtrl">
+<form name="editLeagueForm" ng-submit="saveLeagueItem()">
+    <div class="form-group add-form">
+        
+        <input type="text" id="itemId" ng-model="EditLeagueCtrl.leagueItem.id" disabled>
+        <label for="itemId">Id</label>
+        <p></p>
+        
+        <input type="text" id="leagueId" ng-model="EditLeagueCtrl.leagueItem.leagueId" size="15" maxSize="10" required>
+        <label for="leagueId">Liga ID</label>
+        <p></p> 
+        
+        <input type="text" id="leagueNameId" ng-model="EditLeagueCtrl.leagueItem.leagueName" size="25" maxSize="50" required>
+        <label for="leagueNameId">Liga Name</label>
+        <p></p>     
+        
+        <input type="text" id="leagueShortNameId" ng-model="EditLeagueCtrl.leagueItem.leagueShortName" size="25" maxSize="15">
+        <label for="leagueShortNameId">Liga Abk&uuml;rzung</label>
+        <p></p>
+        
+        <button type="submit" class="btn btn-default" ng-disabled="editLeagueForm.$invalid">Speichern</button>
+         
+    </div>  
+</form>
+</div>

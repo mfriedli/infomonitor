@@ -1,0 +1,22 @@
+<div  ng-controller="AddLeagueCtrl as AddLeagueCtrl">
+<form name="addLeagueForm" ng-submit="saveLeagueItem()">
+    <div class="form-group add-form">
+        
+             
+        <input type="text" id="leagueId" ng-model="AddLeagueCtrl.leagueItem.leagueId" size="15" maxSize="10" required>
+        <label for="leagueId">Liga ID</label>
+        <p></p> 
+        
+        <input type="text" id="leagueNameId" ng-model="AddLeagueCtrl.leagueItem.leagueName" size="25" maxSize="50" required>
+        <label for="leagueNameId">Liga Name</label>
+        <p></p>     
+        
+        <input type="text" id="leagueShortNameId" ng-model="AddLeagueCtrl.leagueItem.leagueShortName" size="25" maxSize="15">
+        <label for="leagueShortNameId">Liga Abk&uuml;rzung</label>
+        <p></p>
+        
+        <button type="submit" class="btn btn-default" ng-disabled="addLeagueForm.$invalid">Speichern</button>
+         
+    </div>  
+</form>
+</div>

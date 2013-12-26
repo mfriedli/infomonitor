@@ -1,5 +1,5 @@
 <div  ng-controller="EditNewsCtrl as EditNewsCtrl">
-<form ng-submit="saveNewsItem()">
+<form name="editNewsForm" ng-submit="saveNewsItem()">
     <div class="form-group add-form">
         
         <input type="text" id="itemId" ng-model="EditNewsCtrl.newsItem.id" disabled>
@@ -10,16 +10,16 @@
         <label for="dateId">Erstellt</label>
         <p></p> 
         
-        <input type="text" id="authorId" ng-model="EditNewsCtrl.newsItem.author" size="35" maxSize="35">
+        <input type="text" id="authorId" ng-model="EditNewsCtrl.newsItem.author" size="35" maxSize="35" required>
         <label for="authorId">Author</label>
         <p></p>     
         
-        <input type="text" id="newsTextId" ng-model="EditNewsCtrl.newsItem.text"  size="150" maxSize="150">
+        <input type="text" id="newsTextId" ng-model="EditNewsCtrl.newsItem.text"  size="150" maxSize="150" required>
         <label for="newsTextId">Breaking News Text</label>
         <p></p>              
             
-        <input type="checkbox" id="blinkingFlagId" name="isActive" ng-model="EditNewsCtrl.newsItem.isBlinking">
-        <label for="activeFlagId">Blinkender Text</label>
+        <input type="checkbox" id="blinkingFlagId" name="isBlinking" ng-model="EditNewsCtrl.newsItem.isBlinking">
+        <label for="blinkingFlagId">Blinkender Text</label>
         <p></p>
         
         <input type="checkbox" id="activeFlagId" name="isActive" ng-model="EditNewsCtrl.newsItem.isActive">
@@ -27,7 +27,7 @@
         <p></p>
               
         
-        <button type="submit" class="btn btn-default">Speichern</button>
+        <button type="submit" class="btn btn-default" ng-disabled="editNewsForm.$invalid">Speichern</button>
          
     </div>  
 </form>

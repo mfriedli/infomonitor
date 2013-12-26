@@ -1,0 +1,25 @@
+<div  ng-controller="EditSeasonCtrl as EditSeasonCtrl">
+<form name="editSeasonForm" ng-submit="saveSeasonItem()">
+    <div class="form-group add-form">
+        
+        <input type="text" id="itemId" ng-model="EditSeasonCtrl.seasonItem.id" disabled>
+        <label for="itemId">Id</label>
+        <p></p>
+        
+        <input type="text" id="seasonId" ng-model="EditSeasonCtrl.seasonItem.seasonId" size="15" maxSize="10" required>
+        <label for="seasonId">Saison ID</label>
+        <p></p> 
+        
+        <input type="text" id="seasonNameId" ng-model="EditSeasonCtrl.seasonItem.seasonName" size="15" maxSize="60" required>
+        <label for="seasonNameId">Saison Name</label>
+        <p></p>     
+        
+        <input type="checkbox" id="activeFlagId" ng-model="EditSeasonCtrl.seasonItem.isActive">
+        <label for="activeFlagId">Aktiv</label>
+        <p></p>
+        
+        <button type="submit" class="btn btn-default" ng-disabled="editSeasonForm.$invalid">Speichern</button>
+         
+    </div>  
+</form>
+</div>

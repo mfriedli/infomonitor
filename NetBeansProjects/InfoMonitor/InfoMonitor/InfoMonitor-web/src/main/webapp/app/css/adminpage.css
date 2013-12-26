@@ -35,11 +35,11 @@
 }
 .view-animate-container {
   position:relative;
-  height:500px!important;
+  height:480px!important;
   position:relative;
   background:#F5F6CE;
   border:1px solid black;
-  height:500px;
+  height:480px;
   overflow:hidden;
 }
 

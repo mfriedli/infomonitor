@@ -82,8 +82,8 @@ public class GameScheduleLoaderImpl implements GameScheduleLoaderRemote {
             }
         }
         Collections.sort(latestResultList, new LatestResultDateComparator());
-        if (latestResultList.size() > 15) {
-            return latestResultList.subList(0, 15);
+        if (latestResultList.size() > 16) {
+            return latestResultList.subList(0, 16);
         } else {
             return latestResultList; // no truncation necessary
         }

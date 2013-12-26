@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,6 +26,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "LEAGUE")
 @NamedQueries({
+    @NamedQuery(name = "League.deleteById", query ="DELETE FROM League l WHERE l.id = :id"),
     @NamedQuery(name = "League.findAll", query = "SELECT l FROM League l"),
     @NamedQuery(name = "League.findById", query = "SELECT l FROM League l WHERE l.id = :id"),
     @NamedQuery(name = "League.findByLeagueId", query = "SELECT l FROM League l WHERE l.leagueId = :leagueId"),
@@ -32,8 +35,8 @@ import javax.validation.constraints.Size;
 public class League implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID")
     private Long id;
     @Basic(optional = false)

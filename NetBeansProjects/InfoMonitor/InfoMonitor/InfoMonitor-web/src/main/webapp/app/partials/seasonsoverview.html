@@ -1,0 +1,24 @@
+<div ng-controller="SeasonsOverviewCtrl as SeasonsOverviewCtrl">
+    <h4 style="margin-left: 10px; margin-bottom: 20px;">Alle Saison Daten:</h4>
+    <table style="table-layout: fixed; " class="table-striped table-hover table-bordered table-condensed admin-edit-table-back admin-edit-table">
+        
+        <thead>
+        <th>Saison ID</th>
+        <th>Saison Name</th>
+        <th>Aktiv</th>
+        <th></th>
+        <th></th>
+        </thead>
+        <tr ng-repeat="item in SeasonsOverviewCtrl.seasonItems">
+            <td>{{item.seasonId}}</td>
+            <td>{{item.seasonName}}</td>
+            <td>{{item.isActive}}</td>            
+            <td><a ng-click="edit(item.id)"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td><a ng-click="delete(item.id)"><span class="glyphicon glyphicon-remove"></span></a></td>
+        </tr>
+
+    </table>
+    
+    <div style="font-size: 9px; argin-left: 3px; margin-top: 10px;">* Es wird nur die erste gefundene aktive (Anzeigen=true) Saison</br>für die Resultate und Garderobeneinteilung auf dem Info Monitor berücksichtig!</div> 
+   
+</div>

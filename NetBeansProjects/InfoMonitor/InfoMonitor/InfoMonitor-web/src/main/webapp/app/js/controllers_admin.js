@@ -271,5 +271,212 @@ angular.module('infoMonitorAdmin.controllers_admin', []).
             $scope.isActive = function(viewLocation) {
                 return viewLocation === $location.path();
             };
+        })
+        .controller('LeaguesOverviewCtrl', function LeaguesOverviewCtrl($scope, $location, $http) {
+            var thisCtrlCtx = this;
+            this.leagueItems = [];
+            loadAllLeagueItems(); // init
+            
+            
+            function loadAllLeagueItems() {
+                $http({
+                    method: 'GET',
+                    url: '/InfoMonitor-web/rest/leagueItems'
+                })
+                .success(function(serviceResponse) {
+                    thisCtrlCtx.leagueItems = angular.fromJson(serviceResponse);
+
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /leagueItems');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/leaguesoverview');                   
+                });
+            };
+        
+            $scope.edit = function(id) {
+                $location.path('/editleague/' + id);
+            };
+            
+            $scope.delete = function(id) {
+                $http({
+                    method: 'DELETE',
+                    url: '/InfoMonitor-web/rest/deleteLeagueItem/id/'+id
+                })
+                .success(function(serviceResponse) {
+                    loadAllLeagueItems();
+                    $location.path('/leaguesoverview');
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /deleteLeagueItem/id');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/leaguesoverview');                  
+                });                
+            };            
+        })
+        .controller('AddLeagueCtrl', function AddLeagueCtrl($scope, $http, $location) {
+            var thisCtrlCtx = this;
+            this.leagueItem;                       
+            
+            $scope.saveLeagueItem = function() {
+                 $http({
+                    method: 'POST',
+                    url: '/InfoMonitor-web/rest/addLeagueItem',                   
+                    data: thisCtrlCtx.leagueItem, // pass in data as strings json
+                    headers: {'Content-Type': 'application/json'}  // set the headers so angular passing info as form data (not request payload)
+                })
+                .success(function(data) {
+                    $location.path('/leaguesoverview');                   
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /addLeagueItem');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/leaguesoverview');                   
+                });
+            };
+        })
+        .controller('EditLeagueCtrl', function EditLeagueCtrl($scope, $http, $routeParams, $location) {
+            var thisCtrlCtx = this;
+            this.leagueItem;
+                                    
+            $http({
+                method: 'GET',
+                url: '/InfoMonitor-web/rest/leagueItem/id/'+$routeParams.itemId
+            })
+            .success(function(serviceResponse) {
+                thisCtrlCtx.leagueItem = angular.fromJson(serviceResponse);
+            })
+            .error(function(data, status) {
+                console.log('Error when calling rest service /leagueItem/id');
+                console.log(data);
+                console.log(status);
+                $location.path('/editLeague');                   
+            });
+            
+            $scope.saveLeagueItem = function() {
+                 $http({
+                    method: 'PUT',
+                    url: '/InfoMonitor-web/rest/updateLeagueItem/id/'+thisCtrlCtx.leagueItem.id,                   
+                    data: thisCtrlCtx.leagueItem, // pass in data as strings x-www-form-urlencoded
+                    headers: {'Content-Type': 'application/json'}  // set the headers so angular passing info as form data (not request payload)
+                })
+                .success(function(data) {
+                    //console.log(data);
+                    $location.path('/leaguesoverview');                   
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /updateLeagueItem/id');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/leaguesoverview');                   
+                });
+            };
+        })       
+        .controller('SeasonsOverviewCtrl', function SeasonsOverviewCtrl($scope, $location, $http) {
+            var thisCtrlCtx = this;
+            this.seasonItems = [];
+            loadAllSeasonItems(); // init
+            
+            
+            function loadAllSeasonItems() {
+                $http({
+                    method: 'GET',
+                    url: '/InfoMonitor-web/rest/seasonItems'
+                })
+                .success(function(serviceResponse) {
+                    thisCtrlCtx.seasonItems = angular.fromJson(serviceResponse);
+
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /seasonItems');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/seasonsoverview');                   
+                });
+            };
+        
+            $scope.edit = function(id) {
+                $location.path('/editseason/' + id);
+            };
+            
+            $scope.delete = function(id) {
+                $http({
+                    method: 'DELETE',
+                    url: '/InfoMonitor-web/rest/deleteSeasonItem/id/'+id
+                })
+                .success(function(serviceResponse) {
+                    loadAllSeasonItems();
+                    $location.path('/seasonsoverview');
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /deleteSeasonItem/id');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/seasonsoverview');                  
+                });                
+            };            
+        })
+        .controller('AddSeasonCtrl', function AddSeasonCtrl($scope, $http, $location) {
+            var thisCtrlCtx = this;
+            this.seasonItem;                       
+            
+            $scope.saveSeasonItem = function() {
+                 $http({
+                    method: 'POST',
+                    url: '/InfoMonitor-web/rest/addSeasonItem',                   
+                    data: thisCtrlCtx.seasonItem, // pass in data as strings json
+                    headers: {'Content-Type': 'application/json'}  // set the headers so angular passing info as form data (not request payload)
+                })
+                .success(function(data) {
+                    $location.path('/seasonsoverview');                   
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /addSeasonItem');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/seasonsoverview');                   
+                });
+            };
+        })
+        .controller('EditSeasonCtrl', function EditSeasonCtrl($scope, $http, $routeParams, $location) {
+            var thisCtrlCtx = this;
+            this.seasonItem;
+                                    
+            $http({
+                method: 'GET',
+                url: '/InfoMonitor-web/rest/seasonItem/id/'+$routeParams.itemId
+            })
+            .success(function(serviceResponse) {
+                thisCtrlCtx.seasonItem = angular.fromJson(serviceResponse);
+            })
+            .error(function(data, status) {
+                console.log('Error when calling rest service /seasonItem/id');
+                console.log(data);
+                console.log(status);
+                $location.path('/editSeason');                   
+            });
+            
+            $scope.saveSeasonItem = function() {
+                 $http({
+                    method: 'PUT',
+                    url: '/InfoMonitor-web/rest/updateSeasonItem/id/'+thisCtrlCtx.seasonItem.id,                   
+                    data: thisCtrlCtx.seasonItem, // pass in data as strings x-www-form-urlencoded
+                    headers: {'Content-Type': 'application/json'}  // set the headers so angular passing info as form data (not request payload)
+                })
+                .success(function(data) {
+                    //console.log(data);
+                    $location.path('/seasonsoverview');                   
+                })
+                .error(function(data, status) {
+                    console.log('Error when calling rest service /updateSeasonItem/id');
+                    console.log(data);
+                    console.log(status);
+                    $location.path('/seasonsoverview');                   
+                });
+            };
         });
+
 
