@@ -112,6 +112,8 @@ infoMonitorApp.controller('BreakingNewsCtrl', function BreakingNewsCtrl($scope) 
             thisCtrlCtx.breakingNews = angular.fromJson(message.data);
             if (thisCtrlCtx.breakingNews[0].isBlinking) {
                 thisCtrlCtx.cssClass = 'css3-blink';
+            } else {
+               thisCtrlCtx.cssClass = '';
             }
         });
     }

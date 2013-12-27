@@ -216,7 +216,7 @@ angular.module('infoMonitorAdmin.controllers_admin', []).
                     method: 'POST',
                     url: '/InfoMonitor-web/rest/addNewsItem',                   
                     data: thisCtrlCtx.newsItem, // pass in data as strings json
-                    headers: {'Content-Type': 'application/json'}  // set the headers so angular passing info as form data (not request payload)
+                    headers: {'Content-Type': 'application/json; charset=utf-8'}  // set the headers so angular passing info as form data (not request payload)
                 })
                 .success(function(data) {
                     $location.path('/newsoverview');                   
@@ -252,7 +252,7 @@ angular.module('infoMonitorAdmin.controllers_admin', []).
                     method: 'PUT',
                     url: '/InfoMonitor-web/rest/updateNewsItem/id/'+thisCtrlCtx.newsItem.id,                   
                     data: thisCtrlCtx.newsItem, // pass in data as strings x-www-form-urlencoded
-                    headers: {'Content-Type': 'application/json'}  // set the headers so angular passing info as form data (not request payload)
+                    headers: {'Content-Type': 'application/json; charset=utf-8'}  // set the headers so angular passing info as form data (not request payload)
                 })
                 .success(function(data) {
                     //console.log(data);
