@@ -77,6 +77,8 @@ public class Content implements Serializable {
     @Size(max = 400)
     @Column(name = "EXT_WEB_URL")
     private String extWebUrl;
+    @Column(name = "SORT_ORDER")
+    private Integer sortOrder;
 
     public Content() {
     }
@@ -161,6 +163,14 @@ public class Content implements Serializable {
         this.extWebUrl = extWebUrl;
     }
 
+    public Integer getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -183,7 +193,8 @@ public class Content implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.friedli.infosystem.entity.Content[ id=" + id + " ]";
+        return "Content{" + "id=" + id + ", isActive=" + isActive + ", contentType=" + contentType + ", creationTime=" + creationTime + ", intervalShow=" + intervalShow + ", width=" + width + ", height=" + height + ", protocol=" + protocol + ", contentUri=" + contentUri + ", extWebUrl=" + extWebUrl + ", sortOrder=" + sortOrder + '}';
     }
+
     
 }

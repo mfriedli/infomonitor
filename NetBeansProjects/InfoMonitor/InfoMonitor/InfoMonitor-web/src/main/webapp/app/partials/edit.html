@@ -18,7 +18,7 @@
         </span>
        
         <span ng-hide="EditCtrl.externalUrlDisabled">
-        <input type="text" id="websiteId" name="websiteUrl" ng-model="EditCtrl.contentItem.externalWebUrl" maxlength="400" size="14">
+        <input type="text" id="websiteId" name="websiteUrl" ng-model="EditCtrl.contentItem.externalWebUrl" maxlength="400" size="55">
         <label for="websiteId">URL externe Webseite</label>
         <p></p>
         </span>
@@ -35,7 +35,10 @@
         <label for="heightId">H&ouml;he in px</label>
         <p></p>
         
-               
+        <input type="text" id="sortOrderId" name="sortOrder" ng-model="EditCtrl.contentItem.sortOrder"  value="1" size="14">
+        <label for="sortOrderId">Anzeigeposition</label>
+        <p></p>
+        
         <input type="checkbox" id="activeFlagId" name="isActive" ng-model="EditCtrl.contentItem.isActive">
         <label for="activeFlagId">Anzeigen</label>
         <p></p>

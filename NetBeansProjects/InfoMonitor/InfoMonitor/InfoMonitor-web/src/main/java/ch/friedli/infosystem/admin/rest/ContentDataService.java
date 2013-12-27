@@ -2,6 +2,7 @@ package ch.friedli.infosystem.admin.rest;
 
 import ch.friedli.secureremoteinterfaceinfomonitor.ContentDetail;
 import ch.friedli.secureremoteinterfaceinfomonitor.ContentLoaderRemote;
+import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -52,6 +53,7 @@ public class ContentDataService {
         detail.setIsActive(item.isIsActive());
         detail.setShowInterval(item.getInterval());
         detail.setId(item.getId());
+        detail.setSortOrder(item.getSortOrder());
         this.contentLoader.updateContentEntityItem(detail);
     }
     
@@ -70,7 +72,8 @@ public class ContentDataService {
             .add("externalWebUrl", detail.getExternalWebUrl() == null ? "" : detail.getExternalWebUrl())
             .add("width", detail.getWidth() == null ? 1300 : detail.getWidth())
             .add("height", detail.getHeight() == null ? 950 : detail.getHeight())
-            .add("date", detail.getCreateDateString() == null ? "" : detail.getCreateDateString());
+            .add("date", detail.getCreateDateString() == null ? "" : detail.getCreateDateString())            
+            .add("sortOrder", detail.getSortOrder());
             
             return builder.build().toString();
     }
@@ -84,7 +87,7 @@ public class ContentDataService {
         for (ContentDetail detail : this.contentLoader.loadAllContentDetails()) {
             builder.add(
                     Json.createObjectBuilder()
-                     .add("id", detail.getId())
+                    .add("id", detail.getId())
                     .add("isActive", detail.isIsActive())
                     .add("contentType", detail.getContentType())
                     .add("contentUri", detail.getContentUri() == null ? "" : detail.getContentUri())
@@ -94,6 +97,8 @@ public class ContentDataService {
                     .add("width", detail.getWidth() == null ? 1300 : detail.getWidth())
                     .add("height", detail.getHeight() == null ? 950 : detail.getHeight())
                     .add("date", detail.getCreateDateString() == null ? "" : detail.getCreateDateString())
+                    .add("sortOrder", detail.getSortOrder())
+                    
             );
         }
         JsonArray detailsJson = builder.build();

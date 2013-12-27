@@ -8,14 +8,14 @@
     background-color: #E0ECF8;
 }
 .admin-trim-info {
-    max-width: 480px;
+    max-width: 400px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     position: relative;
  }
  .admin-trim-info-2 {
-    max-width: 250px;
+    max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -14,7 +14,7 @@
         <p></p>        
        
         <span ng-hide="AddCtrl.externalUrlDisabled">
-        <input type="text" id="websiteId" placeholder="www.xyz.ch" name="websiteUrl" ng-model="AddCtrl.formData.selectedWebsiteUrl" maxlength="400" size="14">
+        <input type="text" id="websiteId" placeholder="http://www.xyz.ch" name="websiteUrl" ng-model="AddCtrl.formData.selectedWebsiteUrl" maxlength="400" size="55">
         <label for="websiteId">URL externe Webseite</label>
         <p></p>
         </span>
@@ -31,6 +31,9 @@
         <label for="heightId">H&ouml;he in px</label>
         <p></p>
         
+        <input type="text" id="sortOrderId" name="sortOrder" value="1" size="14">
+        <label for="sortOrderId">Anzeigeposition</label>
+        <p></p>
                
         <input type="checkbox" id="activeFlagId" name="isActive" checked>
         <label for="activeFlagId">Anzeigen</label>

@@ -44,7 +44,7 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
             itemToBeUpdated.setIsActive(detail.isIsActive() == true ? Short.parseShort("1") : Short.parseShort("0"));
             itemToBeUpdated.setIntervalShow(detail.getShowInterval());
             itemToBeUpdated.setCreationTime(new Date());
-
+            itemToBeUpdated.setSortOrder(detail.getSortOrder());
             this.em.persist(itemToBeUpdated);
         }
     }
@@ -69,6 +69,7 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
         entity.setIsActive(detail.isIsActive() ? (short) 1 : 0);
         entity.setProtocol(detail.getProtocol());
         entity.setExtWebUrl(detail.getExternalWebUrl());
+        entity.setSortOrder(detail.getSortOrder());
         this.em.persist(entity);
     }
 
@@ -78,7 +79,7 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
         List<ContentDetail> contentDetailItems = new ArrayList<>();
         List<Content> contentItems
                 = em.createNamedQuery("Content.findAll").getResultList();
-        Collections.sort(contentItems, new PublishDateComparator());
+        Collections.sort(contentItems, new SortOrderComparator());
         for (Content item : contentItems) {
             contentDetailItems.add(convertConvertDetail(item));
         }
@@ -91,7 +92,7 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
         List<ContentDetail> contentDetailItems = new ArrayList<>();
         List<Content> contentItems
                 = em.createNamedQuery("Content.findByIsActive").setParameter("isActive", 1).getResultList();
-        Collections.sort(contentItems, new PublishDateComparator());
+        Collections.sort(contentItems, new SortOrderComparator());
         for (Content item : contentItems) {
             contentDetailItems.add(convertConvertDetail(item));
         }
@@ -103,6 +104,13 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
         @Override
         public int compare(Content o1, Content o2) {
             return o1.getCreationTime().compareTo(o2.getCreationTime());
+        }
+    }
+    class SortOrderComparator implements Comparator<Content> {
+
+        @Override
+        public int compare(Content o1, Content o2) {
+            return o1.getSortOrder().compareTo(o2.getSortOrder());
         }
     }
     
@@ -119,6 +127,7 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
         detail.setExternalWebUrl(item.getExtWebUrl());
         SimpleDateFormat df = new SimpleDateFormat("dd. MMM YYYY HH:mm:ss");
         detail.setCreateDateString(df.format(item.getCreationTime()));
+        detail.setSortOrder(item.getSortOrder());
         return detail;
     }
 }

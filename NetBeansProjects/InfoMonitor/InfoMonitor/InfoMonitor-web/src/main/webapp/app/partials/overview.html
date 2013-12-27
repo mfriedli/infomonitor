@@ -10,6 +10,7 @@
         <th>Webseite</th>
         <th>Breite</th>
         <th>H&ouml;he</th>
+        <th>Position</th>
         <th>Anzeigen</th>
         <th>Erstellung</th>
         <th></th>
@@ -22,6 +23,7 @@
             <td class="admin-trim-info">{{item.externalWebUrl}}</td>
             <td>{{item.width}} px</td>
             <td>{{item.height}} px</td>
+            <td>{{item.sortOrder}}</td>
             <td>{{item.isActive}}</td>
             <td>{{item.date}}</td>
             <td><a ng-click="edit(item.id)"><span class="glyphicon glyphicon-edit"></span></a></td>

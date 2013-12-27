@@ -32,6 +32,9 @@ public class ContentItem {
     private String externalWebUrl;
     @XmlElement
     private String createDateString;
+    
+    @XmlElement
+    private Integer sortOrder;
 
     public Integer getId() {
         return id;
@@ -113,9 +116,18 @@ public class ContentItem {
         this.createDateString = createDateString;
     }
 
+    public Integer getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
     @Override
     public String toString() {
-        return "ContentItem{" + "id=" + id + ", width=" + width + ", height=" + height + ", interval=" + interval + ", contentUri=" + contentUri + ", contentType=" + contentType + ", protocol=" + protocol + ", isActive=" + isActive + ", externalWebUrl=" + externalWebUrl + ", createDateString=" + createDateString + '}';
+        return "ContentItem{" + "id=" + id + ", width=" + width + ", height=" + height + ", interval=" + interval + ", contentUri=" + contentUri + ", contentType=" + contentType + ", protocol=" + protocol + ", isActive=" + isActive + ", externalWebUrl=" + externalWebUrl + ", createDateString=" + createDateString + ", sortOrder=" + sortOrder + '}';
     }
-    
+
+        
 }
