@@ -32,8 +32,8 @@ body {
     top: 305px;
     width: 605px;
     height: 640px;
-    margin-top: 10px;
-    background-color: #F7FE2E;
+    margin-top: 15px;
+    background-color: black;
 }
 
 #content {
@@ -43,7 +43,7 @@ body {
     width: 1300px;
     height: 950px;
     top: 5px;
-    background-color: #F7FE2E;
+    background-color: black;
 }
 
 #footer {
