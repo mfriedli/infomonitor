@@ -17,7 +17,8 @@ angular.module('infoMonitorAdmin.controllers_admin', []).
 */
             this.items = [
                 {name: 'Externe Webseite', value: 'WEBPAGE'},
-                {name: 'Bild (gif,png,jpg)', value: 'PICTURE'}
+                {name: 'Bild (gif,png,jpg)', value: 'PICTURE'},
+                {name: 'Video (mp4)', value: 'VIDEO'}
             ];
 /*
             $scope.processForm = function() {
@@ -61,7 +62,7 @@ angular.module('infoMonitorAdmin.controllers_admin', []).
                     thisCtrlCtx.externalUrlDisabled = false;
                     thisCtrlCtx.fileChooserDisabled = true;
                 }
-                if (thisCtrlCtx.formData.selectedItem.value === 'PICTURE') {
+                if (thisCtrlCtx.formData.selectedItem.value === 'PICTURE' || thisCtrlCtx.formData.selectedItem.value === 'VIDEO') {
                     thisCtrlCtx.externalUrlDisabled = true;
                     thisCtrlCtx.fileChooserDisabled = false;
                 }

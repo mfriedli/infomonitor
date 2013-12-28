@@ -131,6 +131,7 @@ infoMonitorApp.controller('ContentCtrl', function ContentCtrl($scope,$http,$sce)
     this.img;
     this.showImage = false;
     this.showWebpage = false;
+    this.showVideo = false;
     this.contentUrl;
     
     var ws = new WebSocket("ws://localhost:8080/InfoMonitor-web/contentendpoint");
@@ -163,9 +164,9 @@ infoMonitorApp.controller('ContentCtrl', function ContentCtrl($scope,$http,$sce)
         $scope.$apply(function() {
             thisCtrlCtx.showImage = false; 
             thisCtrlCtx.showWebpage = false;
+            thisCtrlCtx.showVideo = false;
             thisCtrlCtx.content = angular.fromJson(message.data);
             if (thisCtrlCtx.content.contentType === 'PICTURE') {
-               // loadImage();
                 thisCtrlCtx.showImage = true;
                 var baseImgUrl = "http://localhost:8080/InfoMonitor-web/content/";
                 thisCtrlCtx.contentUrl = baseImgUrl.concat(thisCtrlCtx.content.contentUri);
@@ -173,6 +174,11 @@ infoMonitorApp.controller('ContentCtrl', function ContentCtrl($scope,$http,$sce)
             else if (thisCtrlCtx.content.contentType === 'WEBPAGE') {
                 thisCtrlCtx.showWebpage = true;
                 thisCtrlCtx.contentUrl = $sce.trustAsResourceUrl(thisCtrlCtx.content.externalWebUrl);
+            }
+            else if (thisCtrlCtx.content.contentType === 'VIDEO') {
+                thisCtrlCtx.showVideo = true;
+                var baseImgUrl = "http://localhost:8080/InfoMonitor-web/content/";
+                thisCtrlCtx.contentUrl = baseImgUrl.concat(thisCtrlCtx.content.contentUri);
             }
         });
     }

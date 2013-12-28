@@ -86,8 +86,12 @@
                 </span>
                 <span ng-if="ContentCtrl.showWebpage"  style="vertical-align: middle;"> 
                     <iframe ng-src="{{ContentCtrl.contentUrl}}" type="text/html" style="border:solid 1px #777" height="{{ContentCtrl.content.height}}" width="{{ContentCtrl.content.width}}" frameborder="0" scrolling="no"></iframe>
-                
-                 </span>
+                </span>
+                <span ng-if="ContentCtrl.showVideo"  style="vertical-align: middle;">
+                    <video autoplay="true" width="{{ContentCtrl.content.height}}" height="{{ContentCtrl.content.height}}">
+                        <source src="{{ContentCtrl.contentUrl}}" type="video/mp4">
+                    </video>
+                </span>
 
             </div> 
         </div>

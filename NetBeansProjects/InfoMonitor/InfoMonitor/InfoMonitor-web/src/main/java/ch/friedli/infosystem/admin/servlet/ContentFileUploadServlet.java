@@ -125,7 +125,13 @@ public class ContentFileUploadServlet extends HttpServlet {
         String isActive = request.getParameter("isActive");
         String protocol = request.getParameter("protocol");
         String externalWebUrl = request.getParameter("websiteUrl");
-
+        String sortOrder = request.getParameter("sortOrder");
+        
+        if (sortOrder != null && !sortOrder.isEmpty()) {
+            detail.setSortOrder(Integer.parseInt(sortOrder));
+        } else {
+            detail.setSortOrder(0); // default is 0
+        }
         if (showInterval != null && !showInterval.isEmpty()) {
             detail.setShowInterval(Integer.parseInt(showInterval));
         } else {
