@@ -1,0 +1,21 @@
+.totomat {
+    font-size: 30px;
+}
+.footer-margin {
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+.breakingnews {
+    font-size: 30px;
+    text-align: center;
+    color: red;
+}
+
+.footer-img-left {
+    margin-left: 5px;
+    margin-top: 15px;
+}
+
+.footer-img-right {
+    margin-top: 45px;
+}

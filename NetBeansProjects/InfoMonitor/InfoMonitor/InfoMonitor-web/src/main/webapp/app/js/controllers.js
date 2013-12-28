@@ -9,6 +9,7 @@ infoMonitorApp.controller('LockerRoomCtrl', function LockerRoomCtrl($scope) {
     this.date = "";
     this.lockerrooms = [];
     this.connectionstate;
+    
     var ws = new WebSocket("ws://localhost:8080/InfoMonitor-web/locckerroomendpoint");
 
     ws.onopen = function() {

@@ -57,7 +57,7 @@ public class EventProducer {
         this.latestResultEvent.fire(event);
     }
 
-    @Schedule(dayOfWeek = "6,7", second = "*", minute = "*/1", hour = "9-22", info = "Totomat Event publisher")
+    @Schedule(dayOfWeek = "6,7", second = "*", minute = "*/2", hour = "9-22", info = "Totomat Event publisher")
     //@Schedule(second = "*/20", minute = "*", hour = "*", info = "Totomat Event publisher")
     public void produceTotomatEvent(Timer t) {
         LOGGER.log(Level.FINE, "start to produce a new totomat event");
@@ -66,7 +66,7 @@ public class EventProducer {
     }
 
     //@Schedule(second = "*", minute = "*/30", hour = "*", info = "BreakingNews Event publisher")
-    @Schedule(second = "*", minute = "*/1", hour = "*", info = "BreakingNews Event publisher")
+    @Schedule(second = "*", minute = "*/2", hour = "*", info = "BreakingNews Event publisher")
     public void produceBreakingNewsEvent(Timer t) {
         LOGGER.log(Level.FINE, "start to produce a new breaking news event");
         BreakingNewsEvent event = new BreakingNewsEvent();

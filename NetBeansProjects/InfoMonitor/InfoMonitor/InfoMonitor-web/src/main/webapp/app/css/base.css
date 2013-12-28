@@ -21,7 +21,7 @@ body {
     position:absolute;
     top: 5px;
     left: 5px;
-    background-color: #F7FE2E;
+    background-color: black;
     display: block;
 }
 
@@ -45,14 +45,35 @@ body {
     top: 5px;
     background-color: black;
 }
-
+#footer-left {
+    z-index: 2;
+    position: absolute;
+    top: 960px;
+    height: 115px;
+    width: 160px;
+    margin-left: 5px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    background-color: #D9D5D5;
+}
 #footer {
     z-index: 2;
     position: absolute;
     top: 960px;
     height: 115px;
-    width: 1910px;
-    margin-left: 5px;
+    width: 1590px;
+    margin-left: 160px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    background-color: #D9D5D5;
+}
+#footer-right {
+    z-index: 2;
+    position: absolute;
+    top: 960px;
+    height: 115px;
+    width: 165px;
+    margin-left: 1750px;
     margin-right: 5px;
     margin-bottom: 5px;
     background-color: #D9D5D5;
