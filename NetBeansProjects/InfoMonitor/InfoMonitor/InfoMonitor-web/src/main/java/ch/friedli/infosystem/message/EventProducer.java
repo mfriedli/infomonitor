@@ -66,7 +66,7 @@ public class EventProducer {
     }
 
     //@Schedule(second = "*", minute = "*/30", hour = "*", info = "BreakingNews Event publisher")
-    @Schedule(second = "*", minute = "*/2", hour = "*", info = "BreakingNews Event publisher")
+    @Schedule(second = "*", minute = "*/5", hour = "*", info = "BreakingNews Event publisher")
     public void produceBreakingNewsEvent(Timer t) {
         LOGGER.log(Level.FINE, "start to produce a new breaking news event");
         BreakingNewsEvent event = new BreakingNewsEvent();
