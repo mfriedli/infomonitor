@@ -57,8 +57,8 @@ public class EventProducer {
         this.latestResultEvent.fire(event);
     }
 
-    @Schedule(dayOfWeek = "6,7", second = "*", minute = "*/2", hour = "9-22", info = "Totomat Event publisher")
-    //@Schedule(second = "*/20", minute = "*", hour = "*", info = "Totomat Event publisher")
+    //@Schedule(dayOfWeek = "6,7", second = "*", minute = "*/2", hour = "9-22", info = "Totomat Event publisher")
+    @Schedule(second = "*", minute = "*/2", hour = "*", info = "Totomat Event publisher")
     public void produceTotomatEvent(Timer t) {
         LOGGER.log(Level.FINE, "start to produce a new totomat event");
         TotomatEvent event = new TotomatEvent();

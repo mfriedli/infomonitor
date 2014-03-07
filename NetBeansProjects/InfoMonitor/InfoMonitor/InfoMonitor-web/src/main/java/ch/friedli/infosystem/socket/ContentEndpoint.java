@@ -76,6 +76,12 @@ public class ContentEndpoint {
             try {
                 List<ContentDetail> details = this.contentLoader.loadActiveContentDetails();
                 ContentDetail detail = details.get(this.currentItemShownIndex);
+                // maybe item(s) have been removed thus currentItemShowIndex might be out of bounds
+                // start with first item again
+                if (detail == null) {
+                    this.currentItemShownIndex = 0;
+                    detail = details.get(0);
+                }
                 peer.getBasicRemote().sendObject(detail);
                 this.currentItemShownIndex++;
                 if (this.currentItemShownIndex == details.size()) {

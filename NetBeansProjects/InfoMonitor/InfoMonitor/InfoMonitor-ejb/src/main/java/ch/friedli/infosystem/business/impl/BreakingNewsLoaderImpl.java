@@ -71,6 +71,7 @@ public class BreakingNewsLoaderImpl implements BreakingNewsLoaderRemote {
             itemToBeUpdated.setIsActive(detail.isIsActive() == true ? (short)1 : (short)0);
             itemToBeUpdated.setIsBlinking(detail.isIsBlinking() == true ? (short)1 : (short)0);
             this.em.persist(itemToBeUpdated);
+            this.em.flush();
         }
     }
 
@@ -91,6 +92,7 @@ public class BreakingNewsLoaderImpl implements BreakingNewsLoaderRemote {
         entity.setAuthor(detail.getAuthor());
         entity.setText(detail.getText());
         this.em.persist(entity);
+        this.em.flush();
     }
 
     private BreakingNewsDetail convertBreakingNewsDetail(Breakingnews item) {

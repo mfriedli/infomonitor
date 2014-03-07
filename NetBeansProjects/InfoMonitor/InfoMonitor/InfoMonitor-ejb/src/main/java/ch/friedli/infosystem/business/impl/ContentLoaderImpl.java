@@ -46,6 +46,7 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
             itemToBeUpdated.setCreationTime(new Date());
             itemToBeUpdated.setSortOrder(detail.getSortOrder());
             this.em.persist(itemToBeUpdated);
+            this.em.flush();
         }
     }
 
@@ -71,6 +72,7 @@ public class ContentLoaderImpl implements ContentLoaderRemote {
         entity.setExtWebUrl(detail.getExternalWebUrl());
         entity.setSortOrder(detail.getSortOrder());
         this.em.persist(entity);
+        this.em.flush();
     }
 
     @Override

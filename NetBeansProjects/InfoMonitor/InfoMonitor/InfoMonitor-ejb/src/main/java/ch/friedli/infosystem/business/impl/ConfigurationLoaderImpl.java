@@ -51,6 +51,7 @@ public class ConfigurationLoaderImpl implements ConfigurationLoaderRemote {
             itemToBeUpdated.setIsActive(detail.isIsActive() ? (short) 1 : 0);
             itemToBeUpdated.setSeasonName(detail.getSeasonName());
             this.em.persist(itemToBeUpdated);
+            this.em.flush();
         }
     }
 
@@ -69,6 +70,7 @@ public class ConfigurationLoaderImpl implements ConfigurationLoaderRemote {
         entity.setIsActive(detail.isIsActive() ? (short) 1 : 0);
         entity.setSeasonName(detail.getSeasonName());
         this.em.persist(entity);
+        this.em.flush();
     }
 
     @Override
@@ -98,6 +100,7 @@ public class ConfigurationLoaderImpl implements ConfigurationLoaderRemote {
             itemToBeUpdated.setLeagueName(detail.getLeagueName());
             itemToBeUpdated.setLeagueShortName(detail.getLeagueShortName());
             this.em.persist(itemToBeUpdated);
+            this.em.flush();
         }
     }
 
@@ -116,6 +119,7 @@ public class ConfigurationLoaderImpl implements ConfigurationLoaderRemote {
         entity.setLeagueName(detail.getLeagueName());
         entity.setLeagueShortName(detail.getLeagueShortName());
         this.em.persist(entity);
+        this.em.flush();
     }
     
     private SeasonDetail convertSeasonDetail(Season item) {
