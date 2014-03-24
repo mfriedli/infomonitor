@@ -5,6 +5,9 @@
     <class>ch.friedli.infosystem.entity.Content</class>
     <class>ch.friedli.infosystem.entity.Breakingnews</class>
     <class>ch.friedli.infosystem.entity.News</class>
+    <class>ch.friedli.infosystem.entity.Game</class>
+    <class>ch.friedli.infosystem.entity.League</class>
+    <class>ch.friedli.infosystem.entity.Season</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
