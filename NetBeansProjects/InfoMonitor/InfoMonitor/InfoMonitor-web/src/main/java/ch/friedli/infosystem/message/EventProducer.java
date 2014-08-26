@@ -43,14 +43,14 @@ public class EventProducer {
     @WBBreakingNewsEvent
     Event<BreakingNewsEvent> breakingNewsEvent;
 
-    @Schedule(second = "*", minute = "*/30", hour = "*", info = "Locker Room Event publisher")
+    @Schedule(persistent = false, second = "*", minute = "*/30", hour = "*", info = "Locker Room Event publisher")
     public void produceLockerRoomEvent(Timer t) {
         LOGGER.log(Level.FINE, "start to produce a new locker room event");
         LockerRoomEvent event = new LockerRoomEvent();
         this.lockerRoomEvent.fire(event);
     }
 
-    @Schedule(second = "*", minute = "*/15", hour = "*", info = "Latest Result Event publisher")
+    @Schedule(persistent = false, second = "*", minute = "*/15", hour = "*", info = "Latest Result Event publisher")
     public void produceLatestResultEvent(Timer t) {
         LOGGER.log(Level.FINE, "start to produce a new latest result event");
         LatestResultsEvent event = new LatestResultsEvent();
@@ -58,7 +58,7 @@ public class EventProducer {
     }
 
     //@Schedule(dayOfWeek = "6,7", second = "*", minute = "*/2", hour = "9-22", info = "Totomat Event publisher")
-    @Schedule(second = "*", minute = "*/2", hour = "*", info = "Totomat Event publisher")
+    @Schedule(persistent = false, second = "*", minute = "*/2", hour = "*", info = "Totomat Event publisher")
     public void produceTotomatEvent(Timer t) {
         LOGGER.log(Level.FINE, "start to produce a new totomat event");
         TotomatEvent event = new TotomatEvent();
@@ -66,7 +66,7 @@ public class EventProducer {
     }
 
     //@Schedule(second = "*", minute = "*/30", hour = "*", info = "BreakingNews Event publisher")
-    @Schedule(second = "*", minute = "*/5", hour = "*", info = "BreakingNews Event publisher")
+    @Schedule(persistent = false, second = "*", minute = "*/5", hour = "*", info = "BreakingNews Event publisher")
     public void produceBreakingNewsEvent(Timer t) {
         LOGGER.log(Level.FINE, "start to produce a new breaking news event");
         BreakingNewsEvent event = new BreakingNewsEvent();
